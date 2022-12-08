@@ -9,15 +9,17 @@ with open('02/input.txt') as f:
     input = f.read()
 rounds = input.split(sep='\n')[:-1]
 
-
-def map_to_symbol(letter):
-    return [i for i in [rock, paper, scissors] if letter in i][0]
-
-
 # symbols with scores
 rock = ('A', 'X', 1)
 paper = ('B', 'Y', 2)
 scissors = ('C', 'Z', 3)
+
+
+def map_to_symbol(letter):
+    for i in [rock, paper, scissors]:
+        if letter in i:
+            return i
+
 
 total_score = 0
 for round in rounds:
