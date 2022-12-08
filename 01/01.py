@@ -7,7 +7,6 @@ Find the top three Elves carrying the most Calories. How many Calories are those
 
 with open('01/input.txt') as f:
     input = f.read()
-
 # split input per elf
 elves = input.split(sep='\n\n')
 
