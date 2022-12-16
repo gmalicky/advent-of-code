@@ -36,7 +36,7 @@ groups = [rucksacks[i:i+3] for i in range(0, len(rucksacks), 3)]
 total = 0
 for group in groups:
     # common item for whole group (badge)
-    common = set(group[0]).intersection(set(group[1]), set(group[2])).pop()
+    common = set(group[0]).intersection(group[1], group[2]).pop()
     total += get_priority(common)
 
 print(f"Sum of priorities in groups of 3 is: {total}")
