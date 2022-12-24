@@ -8,8 +8,15 @@ import copy
 
 with open('05/input.txt') as f:
     input = f.read()
-
 start_position, instructions = input.split('\n\n')
+
+
+def log_top_of_stacks(stacks):
+    print("Top of each stack:")
+    for stack in stacks:
+        print(stack[-1], end='')
+
+
 instructions = instructions.splitlines()
 instructions = tuple(tuple(instruction.split()[1::2]) for instruction in instructions)
 start_lines = start_position.splitlines()
@@ -31,9 +38,7 @@ for instruction in instructions:
         box_to_move = stacks[int(instruction[1]) - 1].pop()
         stacks[int(instruction[2]) - 1].append(box_to_move)
 
-print("Top of each stack:")
-for stack in stacks:
-    print(stack[-1], end='')
+log_top_of_stacks(stacks)
 
 print("\n--- Part Two ---")
 
@@ -44,6 +49,4 @@ for instruction in instructions:
     del stacks2[int(instruction[1]) - 1][start_move_index:]
     stacks2[int(instruction[2]) - 1] += boxes_to_move
 
-print("Top of each stack:")
-for stack in stacks2:
-    print(stack[-1], end='')
+log_top_of_stacks(stacks2)
