@@ -4,7 +4,7 @@ After the rearrangement procedure completes, what crate ends up on top of each s
 --- Part Two ---
 After the rearrangement procedure completes, what crate ends up on top of each stack? (move multiple crates at once)
 """
-import copy
+from copy import deepcopy
 
 with open('05/input.txt') as f:
     input = f.read()
@@ -30,7 +30,7 @@ for line in start_lines:
     for i, box in enumerate(line):
         if box != ' ':
             stacks[i].append(box)
-stacks2 = copy.deepcopy(stacks)
+stacks2 = deepcopy(stacks)
 
 # moving crates between stacks by one
 for instruction in instructions:
