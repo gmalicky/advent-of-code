@@ -5,10 +5,10 @@ Find all of the directories with a total size of at most 100000. What is the sum
 Find the smallest directory that, if deleted, would free up enough space on the filesystem to run the update. What is the total size of that directory?
 """
 
-with open('07/input.txt') as f:
+with open("input.txt") as f:
     input = f.read()
 
-tree = {'/': {}}
+tree = {"/": {}}
 dir_sizes = {}
 
 
@@ -16,19 +16,19 @@ def create_file_tree(input):
     pwd = []
     for cmd in input:
         cmd_parts = cmd.split()
-        if cmd.startswith('$'):
+        if cmd.startswith("$"):
             # command
-            if cmd_parts[1] == 'cd':
+            if cmd_parts[1] == "cd":
                 # change working directory
                 folder = cmd_parts[-1]
-                match(folder):
-                    case '/':
-                        pwd = ['/']
-                    case '..':
+                match (folder):
+                    case "/":
+                        pwd = ["/"]
+                    case "..":
                         pwd.pop()
                     case _:
                         pwd.append(folder)
-        elif cmd.startswith('dir'):
+        elif cmd.startswith("dir"):
             # directory info
             folder_name = cmd_parts[-1]
             create_in_path(pwd, folder_name, {})
@@ -51,11 +51,11 @@ def count_dir_sizes(subtree, path):
         if isinstance(v, dict):
             # if folder, cd, add to results and recurse
             path.append(k)
-            dir_sizes.setdefault('/'.join(path), 0)
+            dir_sizes.setdefault("/".join(path), 0)
             count_dir_sizes(v, path)
         else:
             # if file, add its size to all folders in path
-            for dir in ['/'.join(path[:i+1]) for i in range(len(path))]:
+            for dir in ["/".join(path[: i + 1]) for i in range(len(path))]:
                 dir_sizes[dir] += int(v)
         if k == path[-1]:
             # if end of folder reached, cd ..
@@ -76,7 +76,7 @@ print(f"Total size of directories with sizes less than 100000: {total_size}")
 print("--- Part Two ---")
 
 # needed - unused
-to_delete = 30000000 - (70000000 - dir_sizes['/'])
+to_delete = 30000000 - (70000000 - dir_sizes["/"])
 candidate_to_delete_size = 30000000
 
 for size in dir_sizes.values():

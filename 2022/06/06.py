@@ -5,7 +5,7 @@ How many characters need to be processed before the first start-of-packet marker
 How many characters need to be processed before the first start-of-message marker is detected?
 """
 
-with open('06/input.txt') as f:
+with open("input.txt") as f:
     input = f.read()
 
 
@@ -18,12 +18,14 @@ def find_start_of_marker(unique, name):
         if len(buffer) == unique:
             # if all x are unique we found the start
             if len(set(buffer)) == unique:
-                print(f"Found start-of-{name} marker at position {i + 1} and it is '{buffer}'")
+                print(
+                    f"Found start-of-{name} marker at position {i + 1} and it is '{buffer}'"
+                )
                 break
 
 
-find_start_of_marker(4, 'packet')
+find_start_of_marker(4, "packet")
 
 print("--- Part Two ---")
 
-find_start_of_marker(14, 'message')
+find_start_of_marker(14, "message")

@@ -5,14 +5,14 @@ What would your total score be if everything goes exactly according to your stra
 Following the Elf's instructions for the second column, what would your total score be if everything goes exactly according to your strategy guide?
 """
 
-with open('02/input.txt') as f:
+with open("input.txt") as f:
     input = f.read()
-rounds = input.split(sep='\n')[:-1]
+rounds = input.split(sep="\n")[:-1]
 
 # symbols with scores
-rock = ('A', 'X', 1)
-paper = ('B', 'Y', 2)
-scissors = ('C', 'Z', 3)
+rock = ("A", "X", 1)
+paper = ("B", "Y", 2)
+scissors = ("C", "Z", 3)
 
 
 def map_to_symbol(letter):
@@ -33,7 +33,11 @@ for round in rounds:
     # score for result
     if ai == me:
         score += 3
-    elif (ai == rock and me == paper) or (ai == paper and me == scissors) or (ai == scissors and me == rock):
+    elif (
+        (ai == rock and me == paper)
+        or (ai == paper and me == scissors)
+        or (ai == scissors and me == rock)
+    ):
         score += 6
 
     total_score += score
@@ -50,17 +54,17 @@ for round in rounds:
 
     chosen = ()
     # score for result
-    if me == 'Y':
+    if me == "Y":
         chosen = ai
         score += 3
-    elif me == 'X':
+    elif me == "X":
         if ai == rock:
             chosen = scissors
         elif ai == paper:
             chosen = rock
         elif ai == scissors:
             chosen = paper
-    elif me == 'Z':
+    elif me == "Z":
         if ai == rock:
             chosen = paper
         elif ai == paper:

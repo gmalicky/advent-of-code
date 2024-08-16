@@ -5,7 +5,7 @@ Find the item type that appears in both compartments of each rucksack. What is t
 Find the item type that corresponds to the badges of each three-Elf group. What is the sum of the priorities of those item types?
 """
 
-with open('03/input.txt') as f:
+with open("input.txt") as f:
     input = f.read()
 rucksacks = input.split()
 
@@ -20,8 +20,8 @@ def get_priority(letter):
 total = 0
 for rucksack in rucksacks:
     size = len(rucksack)
-    left_pocket = set(rucksack[:size // 2])
-    right_pocket = set(rucksack[size // 2:])
+    left_pocket = set(rucksack[: size // 2])
+    right_pocket = set(rucksack[size // 2 :])
 
     # common item for both pockets
     common = left_pocket.intersection(right_pocket).pop()
@@ -31,7 +31,7 @@ print(f"Sum of priorities in pockets is: {total}")
 
 print("--- Part Two ---")
 
-groups = [rucksacks[i:i+3] for i in range(0, len(rucksacks), 3)]
+groups = [rucksacks[i : i + 3] for i in range(0, len(rucksacks), 3)]
 
 total = 0
 for group in groups:

@@ -5,10 +5,11 @@ Find the Elf carrying the most Calories. How many total Calories is that Elf car
 Find the top three Elves carrying the most Calories. How many Calories are those Elves carrying in total?
 """
 
-with open('01/input.txt') as f:
+with open("input.txt") as f:
+
     input = f.read()
 # split input per elf
-elves = input.split(sep='\n\n')
+elves = input.split(sep="\n\n")
 
 # calories of each elf
 calories = []

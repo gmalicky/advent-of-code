@@ -4,17 +4,18 @@ After the rearrangement procedure completes, what crate ends up on top of each s
 --- Part Two ---
 After the rearrangement procedure completes, what crate ends up on top of each stack? (move multiple crates at once)
 """
+
 from copy import deepcopy
 
-with open('05/input.txt') as f:
+with open("input.txt") as f:
     input = f.read()
-start_position, instructions = input.split('\n\n')
+start_position, instructions = input.split("\n\n")
 
 
 def log_top_of_stacks(stacks):
     print("Top of each stack:")
     for stack in stacks:
-        print(stack[-1], end='')
+        print(stack[-1], end="")
 
 
 instructions = instructions.splitlines()
@@ -28,7 +29,7 @@ stacks = [[] for _ in range(len(start_lines[0]))]
 start_lines.reverse()
 for line in start_lines:
     for i, box in enumerate(line):
-        if box != ' ':
+        if box != " ":
             stacks[i].append(box)
 stacks2 = deepcopy(stacks)
 
